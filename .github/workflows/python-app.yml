@@ -39,4 +39,10 @@ jobs:
         pip install pytest
         pytest
 
+    - name: Build & Push Image
+      run: |
+        echo "${{ secrets.DOCKERPW }}" | docker login -u "priyavarshney" --password-stdin
+        docker image build -t priyavarshney/pyflask:latest .
+        docker push priyavarshney/pyflask:latest
+
         
